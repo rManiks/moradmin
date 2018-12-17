@@ -3,6 +3,15 @@ from django.db import models
 class Location(models.Model):
     number = models.CharField(max_length=100)
     address_line_one = models.CharField(max_length=100)
+    address_line_two = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    district = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    post_code = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.address_line_one
 
 class Party(models.Model):
     forename = models.CharField(max_length=100)
