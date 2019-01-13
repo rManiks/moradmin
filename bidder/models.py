@@ -3,9 +3,9 @@ from django.db import models
 class Location(models.Model):
     number = models.CharField(max_length=100)
     address_line_one = models.CharField(max_length=100)
-    address_line_two = models.CharField(max_length=100)
+    address_line_two = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=100)
-    district = models.CharField(max_length=100)
+    district = models.CharField(max_length=100, null=True)
     state = models.CharField(max_length=100)
     post_code = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
@@ -22,6 +22,9 @@ class Client(Party):
     identity_proof = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
     fav_locations = models.ForeignKey(Location, on_delete=models.CASCADE) #Array
+
+    def __str__(self):
+        return self.surname
 
 class ServiceProvier(Party):
     license_details = models.CharField(max_length=100)
